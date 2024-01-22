@@ -1,4 +1,15 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
 /* DROP DOWN MENU */
+.dropdown-menu {
+  display: flex;
+  gap: 1rem;
+}
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -18,11 +29,4 @@
 .dropdown-content a:hover {
   background-color: #f1f1f1
 }
-
-.pinkbox {
-  background-color: pink;
-  width: 200px;
-  height: 200px;
-}
-
 /* HAMBURGER MENU */
