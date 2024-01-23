@@ -1,4 +1,4 @@
-//  DROP DOWN MENU
+// DROP DOWN MENU
 document.querySelectorAll(".btn").forEach((button) => {
   button.addEventListener("click", () => {
     button.nextElementSibling.classList.toggle("dropdown-content-hide");
