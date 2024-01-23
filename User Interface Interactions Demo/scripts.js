@@ -1,18 +1,20 @@
 //  DROP DOWN MENU
 function toggleDropdown() {
-  const dropdownContent = document.getElementById("dropdownContent");
-  if (dropdownContent.style.display === "block") {
-    dropdownContent.style.display = "none";
-  } else {
-    dropdownContent.style.display = "block";
-  }
+  let dropdownContent = event.target.nextElementSibling;
+  dropdownContent.classList.toggle("dropdown-content");
 }
 
-document.querySelectorAll(".dropdown-content").forEach((item) => {
-  item.addEventListener("click", () => {
-    const dropdownContent = document.getElementById("dropdownContent");
-    dropdownContent.style.display = "none";
-  });
+document.querySelectorAll(".dropdown-content").forEach((button) => {
+  button.addEventListener("click", toggleDropdown);
 });
 
 // HAMBURGER MENU
+const menu = document.getElementById("menu");
+const nav = document.getElementById("nav");
+const menuBg = document.getElementById("menu-bg");
+
+menu.addEventListener("click", () => {
+  menu.classList.toggle("change");
+  nav.classList.toggle("change");
+  menuBg.classList.toggle("change-bg");
+});
