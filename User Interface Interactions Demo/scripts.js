@@ -1,11 +1,8 @@
 //  DROP DOWN MENU
-function toggleDropdown() {
-  let dropdownContent = event.target.nextElementSibling;
-  dropdownContent.classList.toggle("dropdown-content");
-}
-
-document.querySelectorAll(".dropdown-content").forEach((button) => {
-  button.addEventListener("click", toggleDropdown);
+document.querySelectorAll(".btn").forEach((button) => {
+  button.addEventListener("click", () => {
+    button.nextElementSibling.classList.toggle("dropdown-content-hide");
+  });
 });
 
 // HAMBURGER MENU
