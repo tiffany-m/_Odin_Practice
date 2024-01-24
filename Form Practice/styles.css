@@ -1,0 +1,36 @@
+html {
+  min-height: 100%;
+  display: flex;
+}
+
+body {
+  margin: auto;
+}
+
+#input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+input {
+  width: 100%;
+  padding: .5rem;
+  margin: .5rem 0 0 0;
+  box-sizing: border-box;
+  border-radius: 3px;
+}
+
+.home {
+  display: flex;
+  gap: 1rem;
+}
+
+#submit {
+  border-radius: 3px;
+  font-size: 1rem;
+  font-weight: bold;
+}

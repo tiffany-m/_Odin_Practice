@@ -1,15 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>Form Practice</title>
-</head>
-<body>
-  <form action="/" method="POST">
-    
-  </form>
-  <script src="scripts.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Form Practice</title>
+  </head>
+  <body>
+    <form action="/" method="POST">
+      <div id="input-container">
+        <div class="input email">
+          <label for="email-input">E-mail</label>
+          <input type="text" id="email-input" placeholder="E-mail" />
+        </div>
+        <div class="input home">
+          <div class="input country">
+            <label for="country-input">Country</label>
+            <input type="text" id="country-input" placeholder="Country" />
+          </div>
+          <div class="input zipcode">
+            <label for="zipcode-input">Zipcode</label>
+            <input type="number" id="zipcode-input" placeholder="Zipcode" />
+          </div>
+        </div>
+        <div class="input password">
+          <label for="password-input">Password</label>
+          <input type="text" id="password-input" placeholder="Password" />
+        </div>
+        <div class="input confirm-password">
+          <label for="confirm-password-input">Confirm Password</label>
+          <input type="text" id="confirm-password-input" placeholder="Confirm Password" />
+        </div>
+        <input type="submit" id="submit" />
+      </div>
+    </form>
+    <script src="scripts.js"></script>
+  </body>
 </html>
