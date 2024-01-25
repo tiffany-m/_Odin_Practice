@@ -52,7 +52,6 @@ input[type="email"].error {
 
 .requiredErrorMsg {
   color: red;
-  font-size: .75rem;
   padding: 0 0 .5rem 0;
   display: inline;
   visibility: hidden;

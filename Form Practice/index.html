@@ -7,7 +7,10 @@
     <title>Form Practice</title>
   </head>
   <body>
-    <form id="sample-form" novalidate>
+    <form id="sample-form" action="#" method="POST" novalidate>
+      <!-- "novalidate" attribute disables browser's native form validation,
+      useful in situations where you want to handle validation yourself with custom logic
+      in JS -->
       <div id="input-container">
         <div>
           <label for="email-input">E-mail</label>
@@ -45,7 +48,6 @@
             type="text"
             id="password-input"
             placeholder="Password"
-            pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$"
             required
           />
         </div>
