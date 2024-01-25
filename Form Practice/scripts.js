@@ -1,4 +1,5 @@
 // Constraint API
+// NOTES:
 document.addEventListener("DOMContentLoaded", (event) => {
   const sampleForm = document.getElementById("sample-form");
   const emailInput = document.getElementById("email-input");
@@ -34,6 +35,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
       emailInput.reportValidity();
     } else {
       emailInput.setCustomValidity("");
+    }
+  });
+
+  countryInput.addEventListener("input", function () {
+    if (countryInput.validity.patternMismatch) {
+      countryInput.setCustomValidity("Please eneter a valid country name.");
+      countryInput.reportValidity();
+    } else {
+      countryInput.setCustomValidity("");
     }
   });
 
