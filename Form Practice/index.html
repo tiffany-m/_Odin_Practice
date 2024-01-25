@@ -9,13 +9,15 @@
   <body>
     <form id="sample-form" novalidate>
       <div id="input-container">
-        <div class="input email">
+        <div>
           <label for="email-input">E-mail</label>
+          <div class="requiredErrorMsg">*Required</div>
           <input type="email" id="email-input" placeholder="E-mail" required />
         </div>
         <div class="home">
-          <div class="input country">
+          <div>
             <label for="country-input">Country</label>
+            <div class="requiredErrorMsg">*Required</div>
             <input
               type="text"
               id="country-input"
@@ -24,8 +26,9 @@
               required
             />
           </div>
-          <div class="input zipcode">
+          <div>
             <label for="zipcode-input">Zipcode</label>
+            <div class="requiredErrorMsg">*Required</div>
             <input
               type="text"
               id="zipcode-input"
@@ -35,8 +38,9 @@
             />
           </div>
         </div>
-        <div class="input password">
+        <div>
           <label for="password-input">Password</label>
+          <div class="requiredErrorMsg">*Required</div>
           <input
             type="text"
             id="password-input"
@@ -45,8 +49,9 @@
             required
           />
         </div>
-        <div class="input confirm-password">
+        <div>
           <label for="confirm-password-input">Confirm Password</label>
+          <div class="requiredErrorMsg">*Required</div>
           <input
             type="text"
             id="confirm-password-input"
