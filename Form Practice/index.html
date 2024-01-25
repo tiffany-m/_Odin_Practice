@@ -30,7 +30,6 @@
               id="zipcode-input"
               placeholder="Zipcode"
               pattern="^\d{5}$"
-              title="Zipcode must be 5 digits long"
               required
             />
           </div>
@@ -41,6 +40,7 @@
             type="text"
             id="password-input"
             placeholder="Password"
+            pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$"
             required
           />
         </div>

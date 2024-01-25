@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   emailInput.addEventListener("input", (event) => {
     if (emailInput.validity.typeMismatch) {
-      emailInput.setCustomValidity("Please provide a properly formatted e-mail address.");
+      emailInput.setCustomValidity("Please enter a valid email address.");
       emailInput.reportValidity();
     } else {
       emailInput.setCustomValidity("");
@@ -43,6 +43,42 @@ document.addEventListener("DOMContentLoaded", (event) => {
       zipcodeInput.reportValidity();
     } else {
       zipcodeInput.setCustomValidity("");
+    }
+  });
+
+  passwordInput.addEventListener("input", function () {
+    let password = passwordInput.value;
+    let validityMessage = "";
+
+    if (passwordInput.validity.patternMismatch) {
+      if (!/[0-9]/.test(password)) {
+        validityMessage += "At least one digit ([0-9]).\n";
+      }
+      if (!/[a-z]/.test(password)) {
+        validityMessage += "At least one lowercase letter ([a-z]).\n";
+      }
+      if (!/[A-Z]/.test(password)) {
+        validityMessage += "At least one uppercase letter ([A-Z]).\n";
+      }
+      if (password.length < 8) {
+        validityMessage += "A minimum length of 8 characters.\n";
+      }
+      passwordInput.setCustomValidity(validityMessage);
+      passwordInput.reportValidity();
+    } else {
+      passwordInput.setCustomValidity("");
+    }
+  });
+
+  confirmPasswordInput.addEventListener("input", function () {
+    let password = passwordInput.value;
+    let confirmPassword = confirmPasswordInput.value;
+
+    if (password !== confirmPassword) {
+      confirmPasswordInput.setCustomValidity("Passwords do not match.");
+      confirmPasswordInput.reportValidity();
+    } else {
+      confirmPasswordInput.setCustomValidity("");
     }
   });
 });

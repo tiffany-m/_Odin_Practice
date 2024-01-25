@@ -42,7 +42,8 @@ input[type="text"].error, input[type="email"].error {
 }
 
 #submit {
-  border-radius: 3px;
   font-size: 1rem;
   font-weight: bold;
+  border-radius: 3px;
+  padding: .5rem;
 }
