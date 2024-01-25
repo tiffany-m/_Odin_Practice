@@ -7,31 +7,53 @@
     <title>Form Practice</title>
   </head>
   <body>
-    <form action="/" method="POST">
+    <form id="sample-form" novalidate>
       <div id="input-container">
         <div class="input email">
           <label for="email-input">E-mail</label>
-          <input type="text" id="email-input" placeholder="E-mail" />
+          <input type="email" id="email-input" placeholder="E-mail" required />
         </div>
-        <div class="input home">
+        <div class="home">
           <div class="input country">
             <label for="country-input">Country</label>
-            <input type="text" id="country-input" placeholder="Country" />
+            <input
+              type="text"
+              id="country-input"
+              placeholder="Country"
+              required
+            />
           </div>
           <div class="input zipcode">
             <label for="zipcode-input">Zipcode</label>
-            <input type="number" id="zipcode-input" placeholder="Zipcode" />
+            <input
+              type="text"
+              id="zipcode-input"
+              placeholder="Zipcode"
+              pattern="^\d{5}$"
+              title="Zipcode must be 5 digits long"
+              required
+            />
           </div>
         </div>
         <div class="input password">
           <label for="password-input">Password</label>
-          <input type="text" id="password-input" placeholder="Password" />
+          <input
+            type="text"
+            id="password-input"
+            placeholder="Password"
+            required
+          />
         </div>
         <div class="input confirm-password">
           <label for="confirm-password-input">Confirm Password</label>
-          <input type="text" id="confirm-password-input" placeholder="Confirm Password" />
+          <input
+            type="text"
+            id="confirm-password-input"
+            placeholder="Confirm Password"
+            required
+          />
         </div>
-        <input type="submit" id="submit" />
+        <button type="submit" id="submit">Submit</button>
       </div>
     </form>
     <script src="scripts.js"></script>

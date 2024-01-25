@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
   min-height: 100%;
   display: flex;
@@ -12,16 +16,24 @@ body {
   flex-direction: column;
   align-items: stretch;
   gap: 1rem;
-  border: 1px solid black;
+  border: 2px solid black;
+  border-radius: 3px;
   padding: 1rem;
 }
 
 input {
   width: 100%;
   padding: .5rem;
-  margin: .5rem 0 0 0;
-  box-sizing: border-box;
+  margin: .25rem 0 .25rem 0;
   border-radius: 3px;
+}
+
+input[type="text"]:valid, input[type="email"]:valid {
+  border: 2px solid green;
+}
+
+input[type="text"].error, input[type="email"].error {
+  border: 2px solid red;
 }
 
 .home {
