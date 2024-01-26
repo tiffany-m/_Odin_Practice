@@ -1,7 +1,11 @@
 // Constraint API
-// Def JS methods for applying and managing constraints on HTML form inputs, enabling custom validation beyond the browser's default capabilities.
+// Definition: JS methods for applying and managing constraints on HTML form inputs, enabling custom validation beyond the browser's default capabilities,
+// can make custom messages.
 
 // Good reference video https://www.youtube.com/watch?v=D9JHizCAx8U&t=112s
+
+// ***I added "novalidate" attribute to HTML form element to disables browser's native form validation, useful in situations where you want to handle
+// validation yourself with custom logic in JS
 
 // NOTES
 // validity readonly property - a ValidityState object, use console.log(element.vaidity) to see.
@@ -18,14 +22,13 @@
 // valid: false; // everything must be false for this to be true
 // valueMissing: true; }
 
-// validationMessage - readonly prop from browser validation or setCustomValidity( ) method
+// checkValidity(): This method is used to check if an element's value complies with its constraints. It returns a boolean value – true if the element's value is valid according to its constraints (like required, min, max, pattern etc.), and false otherwise. example element.validity.typeMismatch
 
-// checkValidity() checks element, returns boolean, fires the invalid event
-
-// reportValidity() checks AND reports result this shows the browser tooltip with warning, can be called at any point to show message
+// reportValidity(): This method also checks the validity of an element's value. However, in addition to returning a boolean value like checkValidity(), it also triggers the display of an error message (if any) to the user.
 
 // setCustomValidity(msg) if called with non-empty string it will change value of validity.valid to false and validity.customError to true,
-//    need to use with reportValidity() for message to show in browser, otherwise just saves to object
+// need to use with reportValidity() for message to show in browser, otherwise just saves to object
+// always set this to empty string to reset property to false so you arent stuck with something saying its failing after user has fixed it
 
 const sampleForm = document.getElementById("sample-form");
 const emailInput = document.getElementById("email-input");
@@ -40,6 +43,19 @@ const inputs = [
   passwordInput,
   confirmPasswordInput,
 ];
+
+function updateValidity(input, message = "") {
+  input.setCustomValidity(message);
+  input.reportValidity();
+}
+
+function checkForRequiredDiv(input) {
+  let errorDiv = input.parentElement.querySelector(".requiredErrorMsg");
+
+  if (errorDiv.classList.contains("showRequiredErrorMsg")) {
+    errorDiv.classList.remove("showRequiredErrorMsg");
+  }
+}
 
 sampleForm.addEventListener("submit", function (e) {
   inputs.forEach((input) => {
@@ -66,6 +82,8 @@ sampleForm.addEventListener("submit", function (e) {
 });
 
 emailInput.addEventListener("input", () => {
+  checkForRequiredDiv(emailInput);
+
   if (emailInput.validity.typeMismatch) {
     emailInput.setCustomValidity("Please enter a valid email address.");
     emailInput.reportValidity();
@@ -75,6 +93,12 @@ emailInput.addEventListener("input", () => {
 });
 
 countryInput.addEventListener("input", function () {
+  checkForRequiredDiv(countryInput);
+
+  let formattedName =
+    countryInput.value.charAt(0).toUpperCase() + countryInput.value.slice(1);
+
+  countryInput.value = formattedName;
   if (countryInput.validity.patternMismatch) {
     countryInput.setCustomValidity("Please enter a valid country name.");
     countryInput.reportValidity();
@@ -84,6 +108,8 @@ countryInput.addEventListener("input", function () {
 });
 
 zipcodeInput.addEventListener("input", function () {
+  checkForRequiredDiv(zipcodeInput);
+
   if (zipcodeInput.validity.patternMismatch) {
     zipcodeInput.setCustomValidity("Zipcode must be 5 digits long");
     zipcodeInput.reportValidity();
@@ -95,6 +121,8 @@ zipcodeInput.addEventListener("input", function () {
 passwordInput.addEventListener("input", function () {
   let password = passwordInput.value;
   let validityMessage = "";
+
+  checkForRequiredDiv(passwordInput);
 
   if (!/[0-9]/.test(password)) {
     validityMessage += "At least one digit ([0-9]).\n";
@@ -109,23 +137,16 @@ passwordInput.addEventListener("input", function () {
     validityMessage += "A minimum length of 8 characters.\n";
   }
 
-  if (validityMessage !== "") {
-    passwordInput.setCustomValidity(validityMessage);
-  } else {
-    passwordInput.setCustomValidity("");
-  }
-
-  passwordInput.reportValidity();
+  updateValidity(passwordInput, validityMessage);
 });
 
 confirmPasswordInput.addEventListener("input", function () {
-  let password = passwordInput.value;
-  let confirmPassword = confirmPasswordInput.value;
+  checkForRequiredDiv(confirmPasswordInput);
 
-  if (password !== confirmPassword) {
-    confirmPasswordInput.setCustomValidity("Passwords do not match.");
-    confirmPasswordInput.reportValidity();
-  } else {
-    confirmPasswordInput.setCustomValidity("");
-  }
+  const validityMessage =
+    passwordInput.value !== confirmPasswordInput.value
+      ? "Passwords do not match."
+      : "";
+
+  updateValidity(confirmPasswordInput, validityMessage);
 });

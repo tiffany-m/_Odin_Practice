@@ -8,9 +8,6 @@
   </head>
   <body>
     <form id="sample-form" action="#" method="POST" novalidate>
-      <!-- "novalidate" attribute disables browser's native form validation,
-      useful in situations where you want to handle validation yourself with custom logic
-      in JS -->
       <div id="input-container">
         <div>
           <label for="email-input">E-mail</label>
@@ -37,6 +34,8 @@
               id="zipcode-input"
               placeholder="Zipcode"
               pattern="^\d{5}$"
+              minlength="5"
+              maxlength="5"
               required
             />
           </div>
