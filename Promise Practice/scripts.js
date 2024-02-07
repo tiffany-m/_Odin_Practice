@@ -141,24 +141,25 @@
 // })
 
 // Bonus ----------------------------------------------------------------------------------------
-const myPromise1 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve(10);
-  }, 2000);
-});
+// const myPromise1 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve(10);
+//   }, 2000);
+// });
 
-const myPromise2 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve(20);
-  }, 3000);
-});
+// const myPromise2 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve(20);
+//   }, 3000);
+// });
 
-console.log(myPromise1, myPromise2);
+// console.log(myPromise1, myPromise2);
 
-Promise.all([myPromise1, myPromise2]).then((values) => {
-  let value1 = values[0];
-  let value2 = values[1];
-  let sum = value1 + value2;
+// Promise.all([myPromise1, myPromise2]).then((values) => {
+//   let value1 = values[0];
+//   let value2 = values[1];
+//   let sum = value1 + value2;
 
-  console.log(sum);
-});
+//   console.log(sum);
+// });
+
