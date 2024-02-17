@@ -25,41 +25,26 @@ function fibs(num) {
 console.log("Assignment 1 - Iteration", fibs(8));
 
 // Recursion
-// function fibsRec(num) {
-//   let newArr = [];
-//   let currentNum = 0;
-//   let nextNum = 1;
-//   let sum = 0;
+// function fibsRec(num, arr = [0, 1]) {
+//   if (num === 0) return [];
+//   if (num === 1) return [0];
+//   if (num === 2) return arr.slice(0, num);
 
-//   if (num === 0) {
-//     return newArr
-//   } else {
-//     newArr.push(sum);
-//     currentNum = nextNum;
-//     nextNum = sum;
-//     sum = currentNum + nextNum;
-//     num--
+//   const nextNum = arr[arr.length - 1] + arr[arr.length - 2];
+//   arr.push(nextNum);
 
-//     return fibsRec(num);
-//   }
+//   return arr.length === num ? arr : fibsRec(num, arr);
 // }
 
-let newArr = [];
-let currentNum = 0;
-let nextNum = 1;
-let sum = 0;
+function fibsRec(num, currNum, nextNum, newArr) {
+  let sum = 0
 
-function fibsRec(num) {
-  if (num === 0) {
-    return newArr;
-  } else {
-    newArr.push(sum);
-    currentNum = nextNum;
-    nextNum = sum;
-    sum = currentNum + nextNum;
+  if (num === 0) return newArr;
 
-    return fibsRec(num - 1);
-  }
+  newArr.push(currNum)
+  sum = currNum + nextNum
+
+  return fibsRec(num - 1, currNum = nextNum, nextNum = sum, newArr)
 }
 
-console.log("Assignment 1 - Recursion", fibsRec(8, 0, 1, 0));
+console.log("Assignment 1 - Recursion", fibsRec(8, 0, 1, []));
