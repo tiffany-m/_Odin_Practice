@@ -1,6 +1,7 @@
 // https://www.youtube.com/watch?v=cob_kM0PJMo good video to watch for how to do basic linked list
 // https://www.youtube.com/watch?v=3OsxH-huRc4&list=PLC3y8-rFHvwjPxNAKvZpdnsr41E0fCMMP&index=47 also good, has a bunch of short videos for different things
 // list = [*Head Node* data: A, next: node] -> [data: B, next: node] -> [data: C, next: null] -> null
+// each node has a "pointer" to the next node, in memory array values are all lined up in a row, in linkedlist they can be scattered
 
 // prettier-ignore
 class Node {
