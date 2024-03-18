@@ -39,3 +39,79 @@ const list = {
 
 console.log(list["A"]); // ['B']
 console.log(list["B"]); // ['A', 'C']
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------------
+class Graph {
+  constructor() {
+    this.adjacencyList = {};
+  }
+
+  // vertex/node
+  addVertex(vertex) {
+    if (!this.adjacencyList[vertex]) {
+      this.adjacencyList[vertex] = new Set(); // constructor that creates a new Set object, collection of unique values, automatically removes duplicates
+    }
+  }
+
+  addEdge(vertex1, vertex2) {
+    if (!this.adjacencyList[vertex1]) {
+      this.addVertex(vertex1);
+    }
+    if (!this.adjacencyList[vertex2]) {
+      this.addVertex(vertex2);
+    }
+
+    this.adjacencyList[vertex1].add(vertex2); // .add is method on Set data structure
+    this.adjacencyList[vertex2].add(vertex1);
+  }
+
+  hasEdge(vertex1, vertex2) {
+    return (
+      this.adjacencyList[vertex1].has(vertex2) && this.adjacencyList[vertex2].has(vertex1) // .has is method on Set data structure
+    );
+  }
+
+  removeEdge(vertex1, vertex2) {
+    this.adjacencyList[vertex1].delete(vertex2);
+    this.adjacencyList[vertex2].delete(vertex1);
+  }
+
+  removeVertex(vertex) {
+    if (!this.adjacencyList[vertex]) return;
+
+    for (let adjacentVertex of this.adjacencyList[vertex]) {
+      this.removeEdge(vertex, adjacentVertex);
+      delete this.adjacencyList[vertex]; // delete keyword is used to remove a property from an object.
+    }
+  }
+
+  display() {
+    for (let vertex in this.adjacencyList) {
+      console.log(vertex + " -> " + [...this.adjacencyList[vertex]]);
+    }
+  }
+}
+
+const graph = new Graph();
+graph.addVertex("A");
+graph.addVertex("B");
+graph.addVertex("C");
+
+graph.addEdge("A", "B");
+graph.addEdge("B", "C");
+
+graph.display(); // 'A -> B', 'B -> A,C', 'C -> B' .... A -> B -> C
+console.log(graph.hasEdge("A", "B")); // true
+console.log(graph.hasEdge("A", "C")); // false
+
+console.log(graph); // Graph
+//                        {adjacencyList:
+//                            { A: Set { 0: "B"}},
+//                            B: Set {0: "A", 1: "C"},
+//                            C: Set {0: "B"}}}
+
+graph.removeEdge("A", "B");
+graph.display(); // A ->, B -> C, C -> B
+
+graph.removeVertex("B");
+graph.display(); // A ->, C ->
