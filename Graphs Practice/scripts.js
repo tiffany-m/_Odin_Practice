@@ -118,7 +118,7 @@ graph.removeVertex("B");
 graph.display(); // A ->, C ->
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
-/* A Queue object for queue-like functionality over JavaScript arrays. */
+// https://www.khanacademy.org/computing/computer-science/algorithms/breadth-first-search/pc/challenge-implement-breadth-first-search
 let Queue = function() {
     this.items = [];
 };
