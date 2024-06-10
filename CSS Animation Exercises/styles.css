@@ -1,0 +1,127 @@
+/* Exercise 1 ----------------------------------------------------------------------- */
+#exercise-one {
+  border-radius: 5px;
+  border: none;
+  background-color: blue;
+  font-size: 2rem;
+  padding: 2rem 3rem;
+  text-align: center;
+  transition: transform .3s ease-in-out;
+}
+
+#exercise-one:hover {
+  transform: scale(1.2)
+}
+
+/* Exercise 2 --------------------------------------------------------------------------- */
+body {
+  overflow: hidden;
+}
+
+.button-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+  opacity: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  padding: 20px;
+  color: #ffffff;
+  background-color: #0e79dd;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.popup-modal {
+  padding: 32px 64px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0%;
+  text-align: center;
+}
+
+.popup-modal p {
+  transition:
+    transform 0.3s ease-in-out,
+    opacity 0.4s ease;
+  transform: translate(-50%, -100%);
+  margin-bottom: 24px;
+}
+
+.backdrop {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background: #000;
+  opacity: 0%;
+}
+
+.popup-modal.show {
+  opacity: 100%;
+  pointer-events: all;
+  transform: translate(-50%, -50%);
+}
+
+.backdrop.show {
+  opacity: 30%;
+}
+
+/* Exercise 3 ----------------------------------------------------------------------------------- */
+.dropdown-container {
+  max-width: 250px;
+  margin: 40px auto;
+  text-align: center;
+  line-height: 50px;
+  font-size: 15px;
+  color: rgb(247, 247, 247);
+  cursor: pointer;
+}
+
+.menu-title {
+  background-color: rgb(163, 162, 162);
+}
+
+.dropdown-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: rgb(99, 97, 97);
+
+  display: none;
+}
+
+ul.dropdown-menu li:hover {
+  background: rgb(47, 46, 46);
+}
+
+.visible {
+  display: block;
+  animation: expand 500ms ease-in-out;
+  transform-origin: top;
+}
+
+@keyframes expand {
+  0% {
+    transform: scaleY(0);
+  }
+
+  70% {
+    transform: scaleY(1.1);
+  }
+
+  100% {
+    transform: scaleY(1);
+  }
+}
